@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organigramme Élargi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 32px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .organization-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-node {
+            background-color: #2980b9;
+            border-radius: 10px;
+            padding: 20px 30px;
+            margin: 15px;
+            color: white;
+            font-weight: bold;
+            width: 220px;
+            text-align: center;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .chart-node img {
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid white;
+        }
+
+        .vacant {
+            background-color: #bdc3c7;
+            color: #333;
+            border: 2px dashed #7f8c8d;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .candidate-list {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .candidate-list h3 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .candidate {
+            margin-bottom: 8px;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: grab;
+            transition: transform 0.3s;
+        }
+
+        .candidate img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Organigramme Élargi - Niveau Hiérarchique</h1>
+
+    <div class="container">
+        <div class="organization-chart">
+            <!-- Directeur Général -->
+            <div class="chart-node">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="CEO">
+                <span>Directeur Général</span>
+                <span>Nom : Pierre Dupont</span>
+            </div>
+
+            <!-- Niveau 2 -->
+            <div class="row">
+                <div class="chart-node it">
+                    <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="Responsable IT">
+                    <span>Informatique</span>
+                    <span>Nom : Jean Leblanc</span>
+                </div>
+                <div class="chart-node vacant" ondrop="drop(event, 'Développeur')" ondragover="allowDrop(event)" onclick="updateCandidates('Développeur')">
+                    <span>Développeur</span>
+                </div>
+                <div class="chart-node vacant" ondrop="drop(event, 'Designer')" ondragover="allowDrop(event)" onclick="updateCandidates('Designer')">
+                    <span>Designer</span>
+                </div>
+                <div class="chart-node it">
+                    <img src="https://randomuser.me/api/portraits/men/14.jpg" alt="Responsable IT">
+                    <span>logistique</span>
+                    <span>Nom : Mohammed</span>
+                </div>
+            </div>
+
+            <!-- Niveau 3 et plus -->
+            <div class="row">
+                <div class="chart-node vacant" ondrop="drop(event, 'Assistant IT')" ondragover="allowDrop(event)" onclick="updateCandidates('Assistant IT')">
+                    <span>Assistant IT</span>
+                </div>
+                <div class="chart-node vacant" ondrop="drop(event, 'Assistant Dev')" ondragover="allowDrop(event)" onclick="updateCandidates('Assistant Dev')">
+                    <span>Assistant Développement</span>
+                </div>
+                <div class="chart-node it">
+                    <img src="https://randomuser.me/api/portraits/men/16.jpg" alt="Responsable comm">
+                    <span>Communication</span>
+                    <span>Nom : Ali</span>
+                </div>
+                <div class="chart-node it">
+    <img src="https://randomuser.me/api/portraits/men/17.jpg" alt="Responsable finance">
+    <span>Finance</span>
+    <span>Nom : Ahmed</span>
+</div>
+<div class="chart-node it">
+    <img src="https://randomuser.me/api/portraits/women/18.jpg" alt="Responsable RH">
+    <span>Ressources Humaines</span>
+    <span>Nom : Sarah</span>
+</div>
+<div class="chart-node it">
+    <img src="https://randomuser.me/api/portraits/men/19.jpg" alt="Responsable technique">
+    <span>Technique</span>
+    <span>Nom : Youssef</span>
+</div>
+<div class="chart-node it">
+    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="Responsable marketing">
+    <span>Marketing</span>
+    <span>Nom : Fatima</span>
+</div>
+<div class="chart-node it">
+    <img src="https://randomuser.me/api/portraits/men/21.jpg" alt="Responsable projet">
+    <span>Projet</span>
+    <span>Nom : Karim</span>
+</div>
+
+            
+      
+        <div class="candidate-list" id="candidateList">
+            <h3>Candidats pour le poste</h3>
+            <div id="candidateListContent"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateCandidates(position) {
+            const employees = [
+                { name: 'Pierre Dupont', position: 'Directeur Général', photo: 'https://randomuser.me/api/portraits/men/1.jpg', scores: { 'Développeur': 3, 'Designer': 2 } },
+                { name: 'Sophie Martin', position: 'Communication', photo: 'https://randomuser.me/api/portraits/women/2.jpg', scores: { 'Développeur': 4, 'Designer': 5 } },
+                { name: 'Jean Leblanc', position: 'Informatique', photo: 'https://randomuser.me/api/portraits/men/7.jpg', scores: { 'Développeur': 5, 'Designer': 3 } },
+                { name: 'Marc Dubois', position: 'Marketing', photo: 'https://randomuser.me/api/portraits/men/8.jpg', scores: { 'Développeur': 2, 'Designer': 4 } }
+                // Ajoutez d'autres employés ici
+            ];
+
+            const candidates = employees.filter(emp => emp.position !== position);
+
+            const candidateListContent = document.getElementById("candidateListContent");
+            candidateListContent.innerHTML = "";
+
+            if (candidates.length > 0) {
+                candidates.sort((a, b) => (b.scores[position] || 0) - (a.scores[position] || 0));
+                candidates.forEach((candidate, index) => {
+                    const div = document.createElement("div");
+                    div.classList.add("candidate");
+                    div.draggable = true;
+                    div.id = `candidate-${index}-${position}`;
+                    div.ondragstart = drag;
+
+                    const img = document.createElement("img");
+                    img.src = candidate.photo;
+                    img.alt = candidate.name;
+
+                    const text = document.createElement("span");
+                    text.textContent = `${candidate.name} (${candidate.position}) - Score: ${candidate.scores[position] || 0}`;
+
+                    div.appendChild(img);
+                    div.appendChild(text);
+                    candidateListContent.appendChild(div);
+                });
+            } else {
+                candidateListContent.innerHTML = "<p>Aucun candidat pour ce poste.</p>";
+            }
+        }
+
+        function drop(ev, newPosition) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const profile = document.getElementById(data);
+
+            if (profile && ev.target.classList.contains("vacant")) {
+                const candidateName = profile.querySelector('span').textContent.split('(')[0].trim();
+                
+                const previousNode = Array.from(document.getElementsByClassName('chart-node')).find(node => node.innerText.includes(candidateName));
+                if (previousNode) {
+                    previousNode.classList.add("vacant");
+                    previousNode.innerHTML = `<span>${previousNode.querySelector('span').textContent}</span>`;
+                }
+
+                const clonedProfile = profile.cloneNode(true);
+                clonedProfile.style.margin = '0';
+                ev.target.innerHTML = '';
+                ev.target.appendChild(clonedProfile);
+
+                const newText = `${newPosition} (rempli par ${candidateName})`;
+                const textSpan = document.createElement('span');
+                textSpan.textContent = newText;
+                textSpan.style.display = 'block';
+                textSpan.style.marginTop = '10px';
+                ev.target.appendChild(textSpan);
+
+                ev.target.classList.remove("vacant");
+
+                updateCandidates(newPosition);
+            }
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+    </script>
+
+</body>
+</html>
